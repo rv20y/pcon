@@ -1,0 +1,27 @@
+#include <SoftwareSerial.h>
+char in;
+
+SoftwareSerial BTSerial(8,9); // RX | TX
+
+void setup()
+{
+  BTSerial.begin(38400);
+  pinMode(13,OUTPUT);
+}
+
+void loop() {
+   if(BTSerial.available())
+   {
+    
+    in = BTSerial.read();
+    if(in == '1')
+      {
+        digitalWrite(13,HIGH);
+      }
+    else if(in == '0')
+      {
+        digitalWrite(13,LOW);
+      }
+   delay(100);
+   }
+}
